@@ -4,10 +4,11 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <sys/wait.h>
 
 int main(int argc, char* argv[]){
     if(argc != 2){
-        printf("Inserire solo il numero dei processi");
+        printf("Insert the number of processes.\n");
         exit(0);
     }
     int statloc;
@@ -16,12 +17,12 @@ int main(int argc, char* argv[]){
     for(int i=0; i<numero; i++){
         pid_t pid = fork();
         if(!pid){
-            printf("Sono il figlio!\n");
-            printf("pid proprio: %d, pid del padre %d, pid della fork: %d\n", getpid(), getppid(), pid);
+            printf("I am the child!\n");
+            printf("Own PID: %d, Parent PID %d, Fork PID: %d\n", getpid(), getppid(), pid);
         }
         else{
-            printf("Sono il padre!\n");
-            printf("pid proprio: %d, pid del padre %d, pid della fork: %d\n", getpid(), getppid(), pid);
+            printf("I am the parent!\n");
+            printf("Own PID: %d, Parent PID %d, Fork PID: %d\n", getpid(), getppid(), pid);
         }
         wait(&statloc);
     }

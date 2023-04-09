@@ -1,0 +1,10 @@
+total 76
+drwxr-xr-x 2 tam tam  4096 Mar 23 15:20 .
+drwxr-xr-x 4 tam tam  4096 Mar 23 14:21 ..
+-rwxrwxrwx 1 tam tam   433 Mar 23 15:20 amogus.txt
+-rwxr-xr-x 1 tam tam 16168 Mar 23 15:20 dirfile
+-rw-r--r-- 1 tam tam   433 Mar 23 15:19 dirfile.c
+-rwxr-xr-x 1 tam tam 16152 Mar 23 15:00 figlio
+-rw-r--r-- 1 tam tam   402 Mar 23 15:00 figlio.c
+-rwxr-xr-x 1 tam tam 16472 Mar 23 15:00 padre
+-rw-r--r-- 1 tam tam  1031 Mar 23 14:57 padre.c

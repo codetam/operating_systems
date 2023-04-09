@@ -20,10 +20,10 @@ int main () {
         /* command line processing */
         k=strlen(buffer);
         buffer[k-1]=buffer[k]; //This removes the newline character
-        if (strcmp(buffer,"esci")==0) exit(0);
+        if (strcmp(buffer,"exit")==0) exit(0);
         if ((pid=fork()) == 0) {
             /* I/O redirection */
-            // printf("attivazione processo figlio\n");
+            // printf("Activation child process\n");
             char* search = " ";
             char* token;
             char* args[100];

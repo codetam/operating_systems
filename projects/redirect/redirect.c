@@ -15,8 +15,8 @@ int main(int argc, char* argv[]){
     int pid = fork();
     if(pid == 0){
         umask(0);
-        //Creates a text file (read and write permissions to everyone)
-        int fd = open(argv[2], O_RDWR | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+        //Creates a text file
+        int fd = open(argv[2], O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
         //Closes standard output
         close(1);
         //Sets the new file as the standard output

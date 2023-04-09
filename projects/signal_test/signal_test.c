@@ -10,17 +10,17 @@
 #include <strings.h> //to add bzero function
 
 void func(){
-    printf("Sono nella funzione speciale!\n");
+    printf("I just entered the secret function!\n");
 }
 
 int main(){
     int pid;
     pid = fork();
     if(pid == 0){
-        printf("Aspetto il segnale, un attimo...\n");
         signal(SIGUSR2,func);
+        printf("Waiting for the signal...\n");  
         sleep(40);
-        printf("print post segnale \n");
+        printf("This has been printed after the signal.\n");
         exit(0);
     }
     else if(pid > 0){

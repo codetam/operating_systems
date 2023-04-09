@@ -4,10 +4,15 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 
-int main(){
+int main(int argc, char* argv[]){
+    if(argc != 2){
+        printf("Insert the number of integers to move to the pipe.\n");
+        exit(1);
+    }
+    int num = atoi(argv[1]);
     int piped[2];
     if(pipe(piped)<0){
-        printf("Pipe non aperta correttamente.\n");
+        printf("Pipe couldn't be opened.\n");
         exit(1);
     }
     int pid = fork();
@@ -15,24 +20,24 @@ int main(){
         close(piped[0]);
         int readInt;
         char stringInt[10];
-        for(int i=0; i<5; i++){
-            printf("Sono il figlio, inserire un intero: ");
+        for(int i=0; i<num; i++){
+            printf("I am the child, insert an integer: ");
             scanf("%d", &readInt);
             sprintf(stringInt,"%d",readInt);
             write(piped[1],stringInt,sizeof(int));
-            printf("Ho scritto l'intero nella pipe.\n");
+            printf("I have written the integer in the pipe.\n");
         }      
     }
     else if(pid > 0){
         int status;
         wait(&status);
         close(piped[1]);
-        char valoreLetto[10];
+        char valueRead[10];
         int readInt;
-        for(int i=0; i<5; i++){
-            read(piped[0],valoreLetto,sizeof(int));
-            readInt = atoi(valoreLetto);
-            printf("Sono il padre, ho letto: %d\n", readInt);
+        for(int i=0; i<num; i++){
+            read(piped[0],valueRead,sizeof(int));
+            readInt = atoi(valueRead);
+            printf("I am the parent, I have read: %d\n", readInt);
         }
     }
 }

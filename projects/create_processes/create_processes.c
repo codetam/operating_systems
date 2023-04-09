@@ -12,17 +12,15 @@ int main(int argc, char* argv[]){
         exit(0);
     }
     int statloc;
-    int numero;
-    sscanf(argv[1],"%d",&numero);
-    for(int i=0; i<numero; i++){
+    int number;
+    sscanf(argv[1],"%d",&number);
+    for(int i=0; i<number; i++){
         pid_t pid = fork();
         if(!pid){
-            printf("I am the child!\n");
-            printf("Own PID: %d, Parent PID %d, Fork PID: %d\n", getpid(), getppid(), pid);
+            printf("I am the child! Own PID: %d, Parent PID %d, Fork PID: %d\n", getpid(), getppid(), pid);
         }
         else{
-            printf("I am the parent!\n");
-            printf("Own PID: %d, Parent PID %d, Fork PID: %d\n", getpid(), getppid(), pid);
+            printf("I am the parent! Own PID: %d, Parent PID %d, Fork PID: %d\n", getpid(), getppid(), pid);
         }
         wait(&statloc);
     }

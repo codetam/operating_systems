@@ -20,8 +20,9 @@ public class Producer extends Thread{
     }
 
     public void run(){
+        Random ran = new Random();
+        
         while(true){
-            Random ran = new Random();
             //Creates a random int between 0 and 999
             int x = ran.nextInt(1000);
             try{  
